@@ -20,6 +20,10 @@ _note: first time it will load data from server and second or more times will be
 - http://localhost:8080/api/v1/users/Kamren
 - [Get list of Usernames](https://jsonplaceholder.typicode.com/users)
 
+위의 링크를 처음 누를때는 서버에서 데이타를 가져오지만, 이 데이타가 레디스에 저장되기 때문에 두번째 이후는 cache된 값을 가져온다.
+"message": "Retrieved Bret's data from the server",
+"message": "Retrieved Bret's data from the cache",
+
 ```sh
 docker ps -a # list of all running/stopped/exited containers
 docker images -a # list of images
