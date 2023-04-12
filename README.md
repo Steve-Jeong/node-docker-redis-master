@@ -1,5 +1,8 @@
 # node-docker-redis
 
+node-redis : ^3.1.2사용
+redis docker images : 6.2사용
+
 How to create a Node JS API with Docker and Redis Server
 --------------------------------------------------------
 https://www.youtube.com/watch?v=mGJ7S2rJ7BY&ab_channel=YafizAbraham%28TechWorld%29
@@ -23,6 +26,8 @@ _note: first time it will load data from server and second or more times will be
 위의 링크를 처음 누를때는 서버에서 데이타를 가져오지만, 이 데이타가 레디스에 저장되기 때문에 두번째 이후는 cache된 값을 가져온다.
 "message": "Retrieved Bret's data from the server",
 "message": "Retrieved Bret's data from the cache",
+
+Postman에서 http://localhost:8083/api/v1/users/Antonette를 GET하면 첫번째 호출에는 수백ms가 걸리지만, 두번째 부터는 수ms가 걸린다. 캐쉬서버에서 데이타를 가져오기 때문이다.
 
 ```sh
 docker ps -a # list of all running/stopped/exited containers
