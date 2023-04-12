@@ -55,3 +55,9 @@ docker system prune -a --volumes # cleanup/remove everything (images, containers
 - [docker-compose v3 reference](https://docs.docker.com/compose/compose-file/compose-file-v3/)
 - [node image](https://hub.docker.com/_/node?tab=tags)
 - [redis image](https://hub.docker.com/_/redis?tab=tags)
+
+node-redis 3.1.2기준으로 createClient를 다음과 같이 해야 node 컨테이너에서 redis컨테이너로 접속이 된다.   
+const client = redis.createClient('redis://172.17.0.2:6379')   
+
+아래와 같이 하면 redis컨테이너의 주소를 redis protocol로 호출한다.   
+const client = redis.createClient('redis://redis:6379')   
