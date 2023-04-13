@@ -14,6 +14,8 @@ services:
     restart: unless-stopped
     network_mode: bridge
     command: /bin/sh -c 'nodemon -e js,html index.js'
+    environment:
+      - REDIS1=redis://redis:6379
     ports:
       - 8083:9000
     volumes:
