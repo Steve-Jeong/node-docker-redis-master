@@ -61,3 +61,28 @@ const client = redis.createClient('redis://172.17.0.2:6379')
 
 아래와 같이 하면 redis컨테이너의 주소를 redis protocol로 호출한다.   
 const client = redis.createClient('redis://redis:6379')   
+
+docker-compose.yml에서  
+redis 컨테이너에 연결하기 위한 필수 명령은 아래이다.
+```docker   
+    links:
+      - redis   # 이것이 있어야 redis에 접속 가능
+```
+
+redis컨테이너에서 expose는 없어도 된다.   
+```
+expose:
+      - 6379
+```
+       
+network-mode는 없어도 redis 컨테이너는 연결 된다.
+```
+network-mode값에 따른, 아래 node-redis의 메시지   
+```javascript
+client.on('connect', () => console.log(`Redis is connected on port ${REDIS_PORT}`))
+```
+network-mode : bridge일 경우
+Redis is connected on port tcp://172.17.0.2:6379
+
+network-mode가 없을 경우
+Redis is connected on port 6379
