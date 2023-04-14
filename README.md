@@ -86,3 +86,24 @@ Redis is connected on port tcp://172.17.0.2:6379
 
 network-mode가 없을 경우
 Redis is connected on port 6379
+
+
+node-redis 4.6.5를 이용하여 redis 컨테이너 7.0.10에 연결 성공
+-------------------------------------------------------------
+
+node-redis 4.6.5는 module을 이용하므로,   
+package.json에 "type" : "module",을 추가
+
+연결부분을 다음과 같이 수정
+```javascript
+const client = redis.createClient({url:REDIS})
+
+await client.connect();
+```
+
+redis함수를 async-await로 수정
+```javascript
+    const cache_data = await client.GET(username)
+
+    await client.SETEX(username, 1440, JSON.stringify(api.data))
+```
